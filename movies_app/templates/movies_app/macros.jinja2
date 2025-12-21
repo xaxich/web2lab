@@ -1,0 +1,70 @@
+{% macro movie_table(movies) %}
+<table class="data-table">
+    <tr>
+        <th>#</th>
+        <th>Название</th>
+        <th>Год</th>
+        <th>IMDB</th>
+        <th>Жанр</th>
+        <th>Режиссёр</th>
+    </tr>
+    {% for m in movies %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ m.title }}</td>
+        <td>{{ m.year }}</td>
+        <td>
+            <span class="rating {% if m.imdb_score >= 8.0 %}high{% elif m.imdb_score >= 7.0 %}medium{% else %}low{% endif %}">
+                {{ m.imdb_score }}
+            </span>
+        </td>
+        <td>{{ m.genre.name }}</td>
+        <td>{{ m.director.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endmacro %}
+
+{% macro genre_table(genres) %}
+<table class="data-table">
+    <tr>
+        <th>#</th>
+        <th>Жанр</th>
+        <th>Фильмов</th>
+        <th>Средний рейтинг</th>
+    </tr>
+    {% for g in genres %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ g.name }}</td>
+        <td>{{ g.movie_count|default(0) }}</td>
+        <td>
+            {% if g.avg_score %}
+                <span class="rating {% if g.avg_score >= 8.0 %}high{% elif g.avg_score >= 7.0 %}medium{% else %}low{% endif %}">
+                    {{ g.avg_score|round(2) }}
+                </span>
+            {% else %}
+                —
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endmacro %}
+
+{% macro director_table(directors) %}
+<table class="data-table">
+    <tr>
+        <th>#</th>
+        <th>Режиссер</th>
+        <th>Фильмов</th>
+    </tr>
+    {% for d in directors %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ d.name }}</td>
+        <td>{{ d.movie_count|default(0) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endmacro %}

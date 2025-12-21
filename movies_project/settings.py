@@ -76,7 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
             ],
         },
-        'NAME': 'jinja',  # ← важно, чтобы render(..., using='jinja') работал
+        'NAME': 'jinja',  
     }
 ]
 

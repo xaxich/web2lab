@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from movies_app.models import Movie, Genre, Director
 from django.db.models import Count, Avg
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Movie
+from .forms import MovieForm
 
 
 def index(request):

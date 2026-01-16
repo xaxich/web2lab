@@ -18,7 +18,7 @@ def movie_create(request):
             return redirect('movie_list')
     else:
         form = MovieForm()
-    return render(request, 'movie_form.jinja', {'form': form})
+    return render(request, 'movie_form.jinja2', {'form': form})
 
 
 def movie_update(request, pk):
@@ -30,7 +30,7 @@ def movie_update(request, pk):
             return redirect('movie_list')
     else:
         form = MovieForm(instance=movie)
-    return render(request, 'movie_form.jinja', {'form': form})
+    return render(request, 'movie_form.jinja2', {'form': form})
 
 
 def movie_delete(request, pk):
@@ -38,7 +38,7 @@ def movie_delete(request, pk):
     if request.method == 'POST':
         movie.delete()
         return redirect('movie_list')
-    return render(request, 'movie_confirm_delete.jinja', {'movie': movie})
+    return render(request, 'movie_confirm_delete.jinja2', {'movie': movie})
 
 
 def index(request):

@@ -1,0 +1,21 @@
+<h1>Список фильмов</h1>
+
+<a href="{{ url('movie_create') }}">Добавить фильм</a>
+
+<table border="1">
+<tr>
+    <th>Название</th>
+    <th>Год</th>
+    <th>Действия</th>
+</tr>
+{% for movie in movies %}
+<tr>
+    <td>{{ movie.title }}</td>
+    <td>{{ movie.year }}</td>
+    <td>
+        <a href="{{ url('movie_update', movie.id) }}">Редактировать</a>
+        <a href="{{ url('movie_delete', movie.id) }}">Удалить</a>
+    </td>
+</tr>
+{% endfor %}
+</table>

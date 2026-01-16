@@ -1,0 +1,10 @@
+<h1>Удалить фильм</h1>
+
+<p>Удалить "{{ movie.title }}"?</p>
+
+<form method="post">
+    {{ csrf_input }}
+    <button type="submit">Удалить</button>
+</form>
+
+<a href="{{ url('movie_list') }}">Отмена</a>

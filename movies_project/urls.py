@@ -19,5 +19,9 @@ from movies_app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('movies/', views.movie_list, name='movie_list'),
+    path('movies/add/', views.movie_create, name='movie_create'),
+    path('movies/<int:pk>/edit/', views.movie_update, name='movie_update'),
+    path('movies/<int:pk>/delete/', views.movie_delete, name='movie_delete'),
 ]
 
